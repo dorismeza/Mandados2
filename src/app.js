@@ -9,12 +9,12 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use('/app', require('./rutas/index'));
 app.use('/app/tipos', require('./rutas/rutasTipos'));
-app.use('/api/usuarios/', require('./rutas/routeUsuario'));
-app.use('/api/pedido', require('./rutas/rutaPedido'));
-app.use('/api/tienda/', require('./rutas/rutasTienda')); 
-app.use('/api/detalle/', require('./rutas/rutasDetalle'));
-app.use('/api/productos/', require('./rutas/rutasProductos'));
-app.use('/api/categorias/', require('./rutas/rutasCategorias'));
+app.use('/app/usuarios/', require('./rutas/routeUsuario'));
+app.use('/app/pedido', require('./rutas/rutaPedido'));
+app.use('/app/tienda/', require('./rutas/rutasTienda')); 
+app.use('/app/detalle/', require('./rutas/rutasDetalle'));
+app.use('/app/productos/', require('./rutas/rutasProductos'));
+app.use('/app/categorias/', require('./rutas/rutasCategorias'));
 app.listen(app.get('port'), ()=> {
     console.log('Sevidor iniciado en el puerto 3001');
 });
