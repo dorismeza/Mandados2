@@ -11,19 +11,15 @@ exports.listarTiendas = async (req, res) =>{
 };
 
 exports.listarXCategorias = async (req, res) => {
-    const validacion = validationResult(req);
-    if (!validacion.isEmpty()) {
-        console.log(validacion.array());
-        res.send("Error en los datos enviados.");
-    }
-    else {
+   // const validacion = validationResult(req);
+   
         const { id } = req.query;
         var buscarTienda = await ModeloTienda.findAll({
             where: {
                 idCategoria: id
             }
         });
-    }
+    
     if (!buscarTienda) {
         res.send("El id de la categoría no existe.");
     }
@@ -34,11 +30,8 @@ exports.listarXCategorias = async (req, res) => {
 
 exports.guardar = async (req, res) =>{
     const validacion = validationResult(req);
-    if(!validacion.isEmpty()){
-        console.log(validacion.array());
-        res.send("Error en los datos enviados.");
-    }
-    else{
+   
+   
         const { nombre, telefono, direccion, categoria, activo, imagen } = req.body;
         await ModeloTienda.create({
             nombreTienda: nombre,
@@ -55,15 +48,9 @@ exports.guardar = async (req, res) =>{
             console.log(error);
             res.send("Error al guardar el registro en la base de datos.");
         });
-    }
 };
 exports.modificar = async (req, res) =>{
-    const validacion = validationResult(req);
-    if(!validacion.isEmpty()){
-        console.log(validacion.array());
-        res.send("Error en los datos enviados.");
-    }
-    else{
+    //const validacion = validationResult(req);
         const {id}=req.query;
         const { nombre, telefono, direccion, categoria, activo, imagen}=req.body;
         var buscarTienda = await ModeloTienda.findOne({
@@ -91,15 +78,10 @@ exports.modificar = async (req, res) =>{
                 res.send("Error al actualizar registro de la tienda.");
             });
         }
-    }
+    
 };
 exports.eliminar = async (req, res) =>{
-    const validacion = validationResult(req);
-    if(!validacion.isEmpty()){
-        console.log(validacion.array());
-        res.send("Debe enviar el id de la tienda");
-    }
-    else{
+    //const validacion = validationResult(req);
         const {id}=req.query;
         var buscarTienda = await ModeloTienda.findOne({
             where:{
@@ -121,5 +103,5 @@ exports.eliminar = async (req, res) =>{
                 res.send("Error al desactivar registro de la tienda.");
             });
         }
-    }
+    
 };

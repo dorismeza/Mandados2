@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
     "express-validator": "^6.14.0",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",

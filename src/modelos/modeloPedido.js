@@ -1,5 +1,5 @@
 const sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const db = require('../configuracion/db');
 const Pedidos = db.define(
 
@@ -13,17 +13,17 @@ const Pedidos = db.define(
 
         idUsuario:{
             type: sequelize.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
 
         direccion:{
             type: sequelize.STRING,
-            allowNull: false
+            allowNull: false,
         },
         estado: {
             type: sequelize.ENUM('AC', 'EN', 'C'),
             allowNull: true,
-            defaultValue: 'AC'
+            defaultValue: 'AC',
         },
 
         formapago:{
@@ -34,7 +34,7 @@ const Pedidos = db.define(
 
         codtarjeta:{
             type: sequelize.STRING,
-            allowNull: true
+            allowNull: true,
         },
         fechatarjeta:{
             type: sequelize.DATE,

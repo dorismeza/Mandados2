@@ -1,29 +1,27 @@
 const modeloUsuario = require('../modelos/modelUsuario');
 const { validationResult } = require('express-validator');
-const  msj  = require("../componente/mensajes");
-const controladorA = require("../controladores/controladosAutenticacion")
+const  msj  = require('../componentes/mensaje');
+
 
 exports.inicio = (req, res) => {
     res.send("Inicio Usuarios");
-}
+};
 
 exports.ListarUsuarios = async (req, res) => {
     const listar = await modeloUsuario.findAll();
     if (listar.lenfth == 0) {
         res.send("No existen Usuarios");
+        msj("Ocurrio un error en el servidor", 500, error, res);
     } else {
         res.json(listar)
-
+        msj("Petición procesada correctamente", 200, tipos, res);
     }
-}
+};
 
 exports.registrarse = async (req, res) =>{
-    const validacion = validationResult(req);
+   // const validacion = validationResult(req);
     const {correo, contrasena, nombre, apellido, telefono} = req.body;
-    if(!validacion.isEmpty){
-        console.log(validacion.array());
-        msj("Porfavor revise los datos", 200, array.validacion() , res);
-    }else{
+    
 
     if(!correo || !contrasena || !nombre || !apellido || !telefono ){
         msj("Los datos ingresados No son Válidos", 200, [] , res);
@@ -55,8 +53,8 @@ exports.registrarse = async (req, res) =>{
         }
   
     }
-    } 
-}
+    }; 
+
 
 exports.modificarContraseña = async (req, res) => {
     const { id } = req.query;
@@ -65,12 +63,9 @@ exports.modificarContraseña = async (req, res) => {
     const data = controladorA.data;
     console.log(data)
 
-    const validacion = validationResult(req);
+    //const validacion = validationResult(req);
 
-    if (!validacion.isEmpty()) {
-        res.send("Porfavor revise los datos");
-        console.log(validacion.array());
-    } else {
+   
         if (!id || !contrasena) {
             res.send("Envie los datos obligatorios")
         } else {
@@ -99,18 +94,13 @@ exports.modificarContraseña = async (req, res) => {
             }
 
         }
-    }
-}
+    };
 
 
 exports.deshabilitar = async (req, res) => {
     const { id } = req.query;
-    const validacion = validationResult(req);
+    //const validacion = validationResult(req);
 
-    if (!validacion.isEmpty()) {
-        res.send("Porfavor revise los datos");
-        console.log(validacion.array());
-    } else {
         if (!id) {
             res.send("Debe enviar los datos obligatorios");
         }
@@ -141,5 +131,4 @@ exports.deshabilitar = async (req, res) => {
 
 
         }
-    }
-}
+};

@@ -1,7 +1,7 @@
 const ModeloProducto = require('../modelos/modeloProductos');
 
 exports.inicio= async (req,res)=>{
-    res.send("Hola estas en el inicio de personas");
+    res.send("Hola estas en el inicio de productos");
 };
 
 //Mostrar

@@ -2,11 +2,11 @@ const  Rutas  = require('express');
 const controlador = require('../controladores/controladorUsuario');
 const {body, query} = require('express-validator');
 const route = Rutas();
-const controladorAutenticacion = require('../controladores/controladosAutenticacion');
+//const controladorAutenticacion = require('../controladores/controladosAutenticacion');
 
 
 route.get('/', controlador.inicio);
-route.get('/listar', controladorAutenticacion.validarAutenticado , controlador.ListarUsuarios);
+route.get('/listar',controlador.ListarUsuarios);
 
 //REGISTRARSE
 route.post('/registrarse', 
@@ -18,18 +18,9 @@ controlador.registrarse);
 //MODIFICAR
 route.put('/modificar', 
 query('id').isInt().withMessage("Debe ingresar el id del usuario"),
-body('contrasena').isLength({min: 6}).withMessage("Debe contener como mínimo 6 caracteres"), controladorAutenticacion.validarAutenticado ,
+body('contrasena').isLength({min: 6}).withMessage("Debe contener como mínimo 6 caracteres"),
 controlador.modificarContraseña);
 
-
 route.post('/deshabilitar', 
-body('correo').isEmail().withMessage("Debe ecribir una dirección de correo válida."),
-controladorAutenticacion.validarAutenticado,
-controlador.deshabilitar);
-
-route.get('/error', controladorAutenticacion.ErrorAutenticacion);
-
-
-
-
+body('correo').isEmail().withMessage("Debe ecribir una dirección de correo válida."), controlador.deshabilitar);
 module.exports = route;

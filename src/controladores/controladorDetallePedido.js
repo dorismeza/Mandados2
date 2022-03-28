@@ -11,12 +11,8 @@ exports.listarDetalle = async (req,res) => {
     }
 };
 exports.guardar = async (req,res) => {
-    const validacion = validationResult(req);
-    if(!validacion.isEmpty()){
-        console.log(validacion.array());
-        res.send("Error en los datos enviados.");
-    }
-    else{
+    //const validacion = validationResult(req);
+
         const { idpedido, idproducto, cantidad } = req.body;
         await ModeloDetalle.create({
             idpedido: idpedido,
@@ -30,15 +26,10 @@ exports.guardar = async (req,res) => {
             console.log(error);
             res.send("Error al guardar el registro en la base de datos.");
         });
-    }
 };
 exports.modificar = async (req,res) => {
     const validacion = validationResult(req);
-    if(!validacion.isEmpty()){
-        console.log(validacion.array());
-        res.send("Error en los datos enviados.");
-    }
-    else{
+  
         const {id}=req.query;
         const { idpedido, idproducto, cantidad } = req.body;
         var buscarDetalle = await ModeloDetalle.findOne({
@@ -63,5 +54,4 @@ exports.modificar = async (req,res) => {
                 res.send("Error al actualizar registro del detalle.");
             });
         }  
-    }
 };

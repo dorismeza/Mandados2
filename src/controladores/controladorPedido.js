@@ -5,11 +5,7 @@ const { validationResult } = require('express-validator');
 
 exports.guardarPedido = async (req, res) =>{
     const {idUsuario, direccion, formapago, codtarjeta, numtarjeta, fechatarjeta, total } = req.body;
-    const validacion = validationResult(req);
-
-    if(!validacion.isEmpty){
-        res.send("Porfavor revise los datos")
-    }else{
+   // const validacion = validationResult(req);
         await modeloPedido.create({
             idUsuario: idUsuario,
             direccion: direccion,
@@ -28,8 +24,8 @@ exports.guardarPedido = async (req, res) =>{
             console.log(error);
             res.send("Error al registrarse")
         });
-    }
-}
+    
+};
 
 exports.modificarPedido = async (req, res) =>{
     
@@ -37,10 +33,8 @@ exports.modificarPedido = async (req, res) =>{
 
 exports.cancelarPedido = async (req, res) =>{
     const {idPedido} = req.query;
-    const validacion = validationResult(req);
-    if(!validacion.isEmpty()){
-        res.send("Porfavor revise los datos");
-    }else{
+   // const validacion = validationResult(req);
+
         const buscarPedido = await modeloPedido.findOne({
             where: {
                 idPedido: idPedido,
@@ -62,6 +56,6 @@ exports.cancelarPedido = async (req, res) =>{
                 res.send("Error al cancelar el pedido")
             });
         }
-    }
-}
+    
+};
 

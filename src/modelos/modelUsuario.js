@@ -1,5 +1,5 @@
 const sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const db = require('../configuracion/db');
 const Usuario = db.define(
 
@@ -12,58 +12,45 @@ const Usuario = db.define(
         },
         correo:{
             type: sequelize.STRING(250),
-            allowNull: false
+            allowNull: false,
         },
         contrasena:{
             type: sequelize.STRING(250),
-            allowNull: false
+            allowNull: false,
         },
         nombre:{
             type: sequelize.STRING(45),
-            allowNull: false
+            allowNull: false,
         },
         apellido:{
             type: sequelize.STRING(45),
-            allowNull: false
+            allowNull: false,
         },
         telefono:{
             type: sequelize.STRING(45),
-            allowNull: false
+            allowNull: false,
         },
         idtipo:{
             type: sequelize.INTEGER,
             allowNull: true, 
-            defaultValue: 1
+            defaultValue: 1,
         },
         activo:{
             type: sequelize.BOOLEAN,
             allowNull: true,
-            defaultValue: true
+            defaultValue: true,
         },
         imagen:{
             type: sequelize.STRING(250),
-            allowNull: true
+            allowNull: true,
         }
     },
 
     {
         tableName: "Usuarios",
         timestamps: false,
-        hooks:{
-            beforeCreate(Usuario){
-                const hash = bcrypt.hashSync(Usuario.contrasena, 5);
-                Usuario.contrasena = hash;
-            },
-            beforeUpdate(Usuario){
-                const hash = bcrypt.hashSync(Usuario.contrasena, 5);
-                Usuario.contrasena = hash;
-            }
-        }
 
     }
 );
 
-Usuario.prototype.VerificarContrasena = (con, com) =>{
-    return bcrypt.compareSync(con, com);
-}
 module.exports = Usuario
