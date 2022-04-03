@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const db = new Sequelize(
     'mandados',
-    'doris',
-    '123456',
+    'root',
+    'hola1901',
     {
         host:'localhost',
         dialect: 'mysql',
