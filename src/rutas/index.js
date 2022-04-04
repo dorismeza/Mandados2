@@ -1,6 +1,10 @@
 const { Router } = require('express');
 const router = Router();
-router.get('/', (req, res) => {
-    res.render('login');
-});
+const AppControler = require('../controladores/controladorApp');
+
+
+router.get('/', AppControler.index);
+router.get('/login', AppControler.login);
+router.get('/tienda', AppControler.tienda);
+
 module.exports= router;

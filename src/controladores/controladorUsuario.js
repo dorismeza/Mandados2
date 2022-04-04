@@ -14,7 +14,7 @@ exports.ListarUsuarios = async (req, res) => {
         msj("Ocurrio un error en el servidor", 500, error, res);
     } else {
         res.json(listar)
-        msj("Petición procesada correctamente", 200, tipos, res);
+        msj("Petición procesada correctamente", 200, [], res);
     }
 };
 
