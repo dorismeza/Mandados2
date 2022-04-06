@@ -1,4 +1,3 @@
-
 <table class="table table-dark table-striped">
   <thead class="thead-dark">
     <tr>
@@ -12,14 +11,18 @@
     </tr>
   </thead>
   <tbody>
+    {{#each listaproductos}}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td scope="row">{{this.dataValues.idproductos}}</td>
+      <td>{{this.dataValues.nombreProducto}}</td>
+      <td>{{this.dataValues.precioProducto}}</td>
+      <td>{{this.dataValues.cantidad}}</td>
+      <td>{{this.dataValues.estado}}</td>
+      <td>{{this.dataValues.imagen}}</td>
       <td class="text-end">
-          <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i>View</a>
+        <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i>View</a>
       </td>
     </tr>
+    {{/each}}
   </tbody>
 </table>
