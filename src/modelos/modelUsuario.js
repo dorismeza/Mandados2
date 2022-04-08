@@ -29,20 +29,6 @@ const Usuario = db.define(
         telefono:{
             type: sequelize.STRING(45),
             allowNull: false,
-        },
-        idtipo:{
-            type: sequelize.INTEGER,
-            allowNull: true, 
-            defaultValue: 1,
-        },
-        activo:{
-            type: sequelize.BOOLEAN,
-            allowNull: true,
-            defaultValue: true,
-        },
-        imagen:{
-            type: sequelize.STRING(250),
-            allowNull: true,
         }
     },
 

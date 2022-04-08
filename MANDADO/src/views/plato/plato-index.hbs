@@ -1,0 +1,23 @@
+<h3 class="mt-3">Lista de Productos</h3>
+<div id="lista-productos">
+    {{#each platos}}
+    <div class="card my-3 "  >
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="/img/restaurantes/{{this.foto}}" alt="">
+                </div>
+                <div class="col-md-8">
+                     <p><b>Nombre: </b></p>
+                    <h4>{{ this.nombre }}</h4>
+                     <p><b>Precio: </b></p>
+                    <h6>{{ this.precio }}</h6>
+                    <p><b>Descripción: </b> {{ this.descripcion }}</p>
+                </div>
+            </div>
+        </div>
+          <div class="text-end">
+                <a class="btn btn-sm btn-outline-success agregar-carrito"  data-id={{this.id}}>Añadir</a>
+            </div>
+    </div>
+{{/each}}</div>
