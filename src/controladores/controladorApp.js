@@ -8,4 +8,7 @@ exports.login =(req,res) =>{
 exports.tienda =(req,res) =>{
     res.render('tienda');
 }
+exports.comercios =(req,res) =>{
+    res.render('comercios');
+}
 

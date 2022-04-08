@@ -6,13 +6,11 @@ exports.inicio= async (req,res)=>{
 
 //Mostrar
 exports.listarproductos = async (req,res)=>{
-    const listaProductos = await ModeloProducto.findAll();
-    if(listaProductos.length==0){
-        res.send("No existen productos en la base");
-    }
-    else{
-        res.json(listaProductos);
-    }
+    const listaproductos = await ModeloProducto.findAll();
+
+        res.render('productos',{
+            listaproductos
+        });
 };
 
 exports.listarXTiendas = async (req, res) => {
